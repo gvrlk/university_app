@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'index.html' %}
+
+{% block content %}
+<h1>WORK DETAIL {{ work.id }}</h1>
+<div>
+    <p><strong>Work name:</strong> {{ work.name }}</p>
+    {% if work.description %}
+    <p><strong>Work description:</strong> {{ work.desctiption }}</p>
+    {% endif %}
+</div>
+{% endblock %}
+</body>
+</html>

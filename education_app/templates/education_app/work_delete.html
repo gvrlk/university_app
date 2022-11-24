@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'works-delete' work.id %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <p>Are you sure you want to delete "{{ work }}?"</p>
+        <input type="submit" value="Confirm">
+</form>
+</body>
+</html>

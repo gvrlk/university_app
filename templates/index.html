@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>Document</title>
+</head>
+<body>
+
+    {% block title %}
+    <header class="page-title">
+        <h1>Главная страница</h1>
+    </header>
+    {% endblock %}
+
+    <nav>
+        <ul class="nav-ul">
+            {% if user.is_authenticated %}
+            <li class="nav-li"><a href={% url 'logout' %}>Выход</a></li>
+            {% else %}
+            <li class="nav-li"><a href={% url 'signup' %}>Регистрация</a></li>
+            <li class="nav-li"><a href={% url 'login' %}>Логин</a></li>
+            {% endif %}
+            <li class="nav-li"><a href={% url 'home' %}>На главную</a></li>
+            <li class="nav-li"><a href={% url 'works-list' %}>Список работ</a></li>
+            <li class="nav-li"><a href={% url 'works-create' %}>Создание работ</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}
+    <article class="content">
+        Вас приветствует сервис по работе с практическими работами!
+    </article>
+    {% endblock %}
+
+    <footer class="page-footer">
+        <p>Создано для учебных целей</p>
+    <footer>
+
+</body>
+</html>

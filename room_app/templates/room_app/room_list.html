@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for room in object_list %}
+    <h1>{{ room.name }}</h1>
+    <h2>{{ room.created_at }} {{ room.updated_at }} </h2>
+    {% endfor %}
+</body>
+</html>

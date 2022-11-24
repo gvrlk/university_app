@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>WORK DETAIL {{ work.id }}</h1>
+<div>
+    <p><strong>Work name:</strong> {{ work.name }}</p>
+    {% if work.description %}
+    <p><strong>Work description:</strong> {{ work.desctiption }}</p>
+    {% endif %}
+    <form action="{% url 'works-update' work.id %}" method="post"> </form>
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+</body>
+</html>

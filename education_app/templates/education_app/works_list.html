@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'index.html' %}
+
+{% block title %}
+<header class="page-title">
+    <h1>Список учебных работ</h1>
+</header>
+{% endblock %}
+
+
+{% block content %}
+<section class="content">
+    <section>
+    <ul>
+        {% for work in page_obj %}
+        <li>
+        <article>
+            <p><strong>Название работы:</strong> {{ work.name }}</p>
+            {% if work.description %}
+            <p><strong>Описание работы:</strong> {{ work.description }}</p>
+            {% else %}
+            <p><strong>Описание отсутствует</strong></p>
+            {% endif %}
+            <a href={% url 'works-detail' work.id %}>Подробнее о работе...</a><br>
+            <a href={% url 'works-delete' work.id %}>Удалить работу</a><br>
+            <a href={% url 'works-update' work.id %}>Редактировать работу</a><br>
+        </article>
+        </li>
+        {% empty %}
+        <article>
+            <p>Практические работы отсутствуют</p>
+        </article>
+        {% endfor %}
+        <br><br>
+        <div>
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; Первая</a>
+                <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+            {% endif %}
+
+            <span>
+                Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+            {% endif %}
+        </div>
+    </ul>
+    </section>
+    <hr>
+    <footer>
+        <h6>Всего представлено практических работ: {{ works|length }}</h6>
+    </footer>
+</section>
+{% endblock %}
+</body>
+</html>
